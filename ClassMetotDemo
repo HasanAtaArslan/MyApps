@@ -1,1 +1,81 @@
+// Program.cs
 
+using System;
+
+namespace ClassMetotDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Customer customer1 = new Customer();
+            customer1.Name = "Hasan Ata";
+            customer1.Surname = "Arslan";
+            customer1.CustomerId = 48;
+            customer1.CustomerNumber = 1859;
+            customer1.CustomerAccount = "hasan_ata_arslan@mail.com";
+
+            Customer customer2 = new Customer();
+            customer2.Name = "Yasin";
+            customer2.Surname = "Kara";
+            customer2.CustomerId = 75;
+            customer2.CustomerNumber = 3685;
+            customer2.CustomerAccount = "yasinkara546@mail.com";
+
+            customerManager customerManager = new customerManager();
+            customerManager.ChangeSettings(customer1);
+            customerManager.CloseAccount(customer1);
+            customerManager.DelCustomer(customer1);
+            customerManager.ChangeSettings(customer2);
+            customerManager.CloseAccount(customer2);
+            customerManager.DelCustomer(customer2);
+
+            Console.ReadLine();
+        }
+    }
+}
+
+//Customer.cs
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ClassMetotDemo
+{
+    class Customer
+    {
+        public int CustomerId { get; set; }
+        public int CustomerNumber { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string CustomerAccount { get; set; }
+    }
+}
+
+
+//CustomerManager.cs
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ClassMetotDemo
+{
+    class CustomerManager
+    {
+       
+        public void DelCustomer(Customer customer)
+        {
+            Console.WriteLine(customer.CustomerId + "Id' li kullanıcı silindi.");
+        }
+        public void ChangeSettings(Customer customer)
+        {
+            Console.WriteLine(customer.CustomerNumber + " numaralı müşterinin ayarları değitirildi.");
+        }
+        public void CloseAccount(Customer customer)
+        {
+            Console.WriteLine(customer.CustomerAccount + " adlı hesap güvenlik sebebiyle kapatıldı.");
+        }
+    }
+}
